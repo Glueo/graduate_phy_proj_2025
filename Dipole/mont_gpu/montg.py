@@ -1,7 +1,7 @@
 # 作者： Glue
 # 创建于 2025年04月18日16时38分18秒
 # glueo@icloud.com
-# 修改：使用Numba CUDA加速
+# 修改：使用Numba CUDA加速,仅供参考
 
 import matplotlib
 import numpy as np
@@ -28,7 +28,6 @@ d = 2.0  # 双极子中两个电荷间距离 (Å)
 def dipole_force_same_kernel(positions, velocities, d_value, dt, steps, r_cut, max_steps, results):
     """
     同种电荷双极子场中粒子轨迹的CUDA核函数
-
     参数:
     positions: 形状为 (n, 2) 的数组，包含所有粒子的初始位置
     velocities: 形状为 (n, 2) 的数组，包含所有粒子的初始速度
@@ -256,7 +255,7 @@ def run_simulations_same_charges_gpu():
     d_results = cuda.to_device(results)
 
     # 设置线程数和块数
-    threads_per_block = 256
+    threads_per_block = 256 # 设置线程数
     blocks_per_grid = (num_speed + threads_per_block - 1) // threads_per_block
 
     # 执行核函数

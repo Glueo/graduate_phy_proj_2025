@@ -19,7 +19,7 @@ except:
     print("警告: 无法设置中文字体，将使用系统默认字体")
 
 # 双极子距离
-d = 2.0  # 双极子中两个电荷间距离 (Å)
+d = 2.0  # 双极子中两个电荷间距离
 
 
 # 势能函数定义
@@ -131,14 +131,13 @@ def dipole_force_opposite(r_vec, k=1.0):
     return force1 + force2
 
 
-#config
+#configs
 steps = 2000  # 模拟步数
 dt = 0.01  # 时间步长
 x0 = -4.0  # 入射起始位置
 
 R_cut = 20.0  # 当粒子运动到距离散射中心大于 R_cut 时，认为散射过程结束
 max_orbit_time = 2000  # 粒子最大轨道运行时间，超过则认为被捕获
-
 
 
 def is_captured(trajectory):
@@ -149,10 +148,7 @@ def is_captured(trajectory):
     # 检查粒子是否长时间未能逃逸
     return True
 
-
-
 # 同种电荷散射模拟
-
 def run_simulations_same_charges():
     num_speed = 20000  # 模拟粒子数
     speed_min, speed_max = 0.1, 2.1
@@ -253,7 +249,6 @@ def run_simulations_same_charges():
 
 
 # 异种电荷散射模拟
-
 def run_simulations_opposite_charges():
     # 模拟组1：不同入射速度（异种电荷）
     num_speed = 20000
